@@ -1,4 +1,6 @@
-function processChoice(num) {
+function getComputerChoice() {
+  let num = Math.ceil(Math.random() * 3);
+
   let choice = "";
 
   switch (num) {
@@ -16,20 +18,33 @@ function processChoice(num) {
   return choice;
 }
 
-function getComputerChoice() {
-  let num = Math.ceil(Math.random() * 3);
-  return processChoice(num);
-}
-
 function getHumanChoice() {
-  let num = parseInt(
-    prompt(`Select one of the options:
-    1. Rock
-    2. Paper
-    3. Scissors
-  `));
+  let choice;
 
-  return processChoice(num);
+  let option = prompt(`Enter one of the options:
+    - Rock
+    - Paper
+    - Scissors
+  `);
+
+  if (option == null) {
+    console.log("Invalid input. Please enter either Rock, Paper, or Scissors");
+    return null;
+  }
+
+  option = option.toLowerCase();
+
+  switch (option) {
+    case "rock":
+    case "paper":
+    case "scissors":
+      choice = option;
+      break;
+    default:
+      console.log("Invalid input. Please enter either Rock, Paper, or Scissors");
+  }
+
+  return choice;
 }
 
 console.log(getHumanChoice());
