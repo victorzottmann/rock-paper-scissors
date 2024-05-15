@@ -1,15 +1,14 @@
-function getComputerChoice() {
-  let num = Math.floor(Math.random() * 3);
+function processChoice(num) {
   let choice = "";
 
   switch (num) {
-    case 0:
+    case 1:
       choice = "Rock";
       break;
-    case 1:
+    case 2:
       choice = "Paper";
       break;
-    case 2:
+    case 3:
       choice = "Scissors";
       break;
   }
@@ -17,5 +16,20 @@ function getComputerChoice() {
   return choice;
 }
 
+function getComputerChoice() {
+  let num = Math.ceil(Math.random() * 3);
+  return processChoice(num);
+}
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+  let num = parseInt(
+    prompt(`Select one of the options:
+    1. Rock
+    2. Paper
+    3. Scissors
+  `));
+
+  return processChoice(num);
+}
+
+console.log(getHumanChoice());
