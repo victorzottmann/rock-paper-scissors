@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let num = Math.ceil(Math.random() * 3);
 
@@ -5,13 +8,13 @@ function getComputerChoice() {
 
   switch (num) {
     case 1:
-      choice = "Rock";
+      choice = "rock";
       break;
     case 2:
-      choice = "Paper";
+      choice = "paper";
       break;
     case 3:
-      choice = "Scissors";
+      choice = "scissors";
       break;
   }
 
@@ -47,4 +50,35 @@ function getHumanChoice() {
   return choice;
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+  const outcomes = {
+    rock: {
+      rock: "draw",
+      paper: "computer wins",
+      scissors: "human wins",
+    },
+    paper: {
+      rock: "human wins",
+      paper: "draw",
+      scissors: "computer wins",
+    },
+    scissors: {
+      rock: "computer wins",
+      paper: "human wins",
+      scissors: "draw",
+    },
+  };
+
+  const result = outcomes[humanChoice][computerChoice];
+
+  if (result == "human wins") {
+    humanScore++;
+  } else if (result == "computer wins") {
+    computerScore++;
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
