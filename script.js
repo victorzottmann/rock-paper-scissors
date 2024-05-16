@@ -1,9 +1,10 @@
+const button = document.querySelector('button');
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 
 function getComputerChoice() {
   let num = Math.ceil(Math.random() * 3);
-
   let choice = "";
 
   switch (num) {
@@ -24,13 +25,14 @@ function getComputerChoice() {
 function getHumanChoice() {
   let choice;
 
-  let option = prompt(`Enter one of the options:
+  let option = prompt(`Round ${round}\n
+  Enter one of the options:
     - Rock
     - Paper
     - Scissors
   `);
 
-  if (option == null) {
+  if (option === null) {
     console.log("Invalid input. Please enter either Rock, Paper, or Scissors");
     return null;
   }
@@ -43,8 +45,6 @@ function getHumanChoice() {
     case "scissors":
       choice = option;
       break;
-    default:
-      console.log("Invalid input. Please enter either Rock, Paper, or Scissors");
   }
 
   return choice;
@@ -69,16 +69,52 @@ function playRound(humanChoice, computerChoice) {
     },
   };
 
+  /**
+   * The logic for this uses a nested object with key maps.
+   * outcomes["rock"] maps to the first rock
+   * outcomes["rock"]["rock"] maps to the nested rock value inside of rock.
+   * 
+   * Essentially, this is how it reads:
+   * outcomes["rock"]["rock"]     -> draw
+   * outcomes["rock"]["paper"]    -> computer wins
+   * outcomes["rock"]["scissors"] -> human wins
+   */
   const result = outcomes[humanChoice][computerChoice];
-
-  if (result == "human wins") {
-    humanScore++;
-  } else if (result == "computer wins") {
-    computerScore++;
-  }
+  return result;
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+  for (let i = 1; i <= 5; i++) {
+    round++;
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+    if (humanSelection == null) {
+      round = 0;
+      break;
+    }
+    
+    const result = playRound(humanSelection, computerSelection);
+
+    if (result === "human wins") {
+      humanScore++;
+    } else if (result === "computer wins") {
+      computerScore++;
+    }
+  }
+
+  if (humanScore != null) {
+    if (humanScore > computerScore) {
+      console.log("You won!");
+    } else if (humanScore < computerScore) {
+      console.log("You lost!");
+    } else {
+      console.log("Draw!");
+    }
+  }
+
+  console.log("Your score:", humanScore);
+  console.log("Computer score:", computerScore);
+}
+
+button.addEventListener('click', playGame);
