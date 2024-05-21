@@ -23,31 +23,12 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let choice;
+  const rockBtn = document.querySelector(".btn-rock");
+  const paperBtn = document.querySelector(".btn-paper");
+  const scissorsBtn = document.querySelector(".btn-scissors");
 
-  let option = prompt(`Round ${round}\n
-  Enter one of the options:
-    - Rock
-    - Paper
-    - Scissors
-  `);
+  
 
-  if (option === null) {
-    console.log("Invalid input. Please enter either Rock, Paper, or Scissors");
-    return null;
-  }
-
-  option = option.toLowerCase();
-
-  switch (option) {
-    case "rock":
-    case "paper":
-    case "scissors":
-      choice = option;
-      break;
-  }
-
-  return choice;
 }
 
 function playRound(humanChoice, computerChoice) {

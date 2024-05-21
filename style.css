@@ -9,14 +9,26 @@ li {
 button {
   margin-left: 22px;
   padding: 8px 24px;
-  background-color: rgb(42, 122, 165);
-  color: white;
   border: none;
+  color: white;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: rgba(42, 122, 165, 0.831);
+.btn-rock {
+  background-color: #eb2b4d;
+}
+
+.btn-paper {
+  background-color: #db9c1f;
+}
+
+.btn-scissors {
+  background-color: #4ea0af;
+}
+
+.btn-start {
+  margin-top: 32px;
+  background-color: #8ab135;
 }
