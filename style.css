@@ -2,6 +2,12 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body {
+  background-color: rgb(56, 62, 74);
+  display: flex;
+  justify-content: center;
+}
+
 li {
   line-height: 2;
 }
@@ -16,19 +22,26 @@ button {
   cursor: pointer;
 }
 
-.btn-rock {
-  background-color: #eb2b4d;
+.buttons {
+  display: flex;
+  gap: 4rem;
 }
 
-.btn-paper {
-  background-color: #db9c1f;
+#rock,
+#paper,
+#scissors {
+  background-color: rgb(47, 51, 61);
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
 }
 
-.btn-scissors {
-  background-color: #4ea0af;
+.fa-solid {
+  font-size: 4rem;
 }
 
-.btn-start {
-  margin-top: 32px;
-  background-color: #8ab135;
+.fa-hand,
+.fa-hand-fist,
+.fa-hand-scissors {
+  color: rgb(244, 213, 73);
 }
