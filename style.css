@@ -26,21 +26,43 @@ header {
 }
 
 header,
-main {
-  display: flex;
-  justify-content: center;
-}
-
-header,
 footer {
+  display: grid;
+  place-items: center;
   padding-block: 1.5rem;
   background-color: var(--clr-bg-light);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 footer {
-  display: grid;
   color: var(--clr-gray);
-  place-items: center;
+}
+
+/* scoreboard */
+.scoreboard {
+  display: flex;
+  gap: 5rem;
+  margin-bottom: 3rem;
+  color: var(--clr-gray);
+  text-align: center;
+}
+
+.player-selection,
+.computer-selection {
+  border-radius: 15px;
+  border: 2px dashed var(--clr-yellow);
+  width: 170px;
+  height: 190px;
+  margin-bottom: 1.5rem;
+}
+
+.score-text {
+  font-size: 1.5rem;
 }
 
 /* buttons */
@@ -68,8 +90,8 @@ footer {
 .btn-paper,
 .btn-scissors {
   background-color: var(--clr-bg-light);
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
 }
 
@@ -79,7 +101,7 @@ footer {
 
 /* font awesome icons */
 .fa-solid {
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 .fa-hand,
