@@ -1,15 +1,46 @@
+:root {
+  --clr-bg-light: rgb(47, 51, 61);
+  --clr-bg-dark: rgb(57, 62, 73);
+  --clr-gray: rgb(170, 177, 189);
+  --clr-green: rgb(161, 194, 129);
+  --clr-hover: rgb(39, 43, 53);
+  --clr-yellow: rgb(244, 213, 73);
+}
+
 * {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: rgb(56, 62, 74);
+  background-color: var(--clr-bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+header {
+  color: var(--clr-gray);
+}
+
+header,
+main {
   display: flex;
   justify-content: center;
 }
 
-li {
-  line-height: 2;
+header,
+footer {
+  padding-block: 1.5rem;
+  background-color: var(--clr-bg-light);
+}
+
+footer {
+  display: grid;
+  color: var(--clr-gray);
+  place-items: center;
 }
 
 /* buttons */
@@ -28,12 +59,17 @@ li {
   cursor: pointer;
 }
 
+.btn:hover {
+  border: 1px solid var(--clr-gray);
+  background-color: var(--clr-hover);
+}
+
 .btn-rock,
 .btn-paper,
 .btn-scissors {
-  background-color: rgb(47, 51, 61);
-  width: 140px;
-  height: 140px;
+  background-color: var(--clr-bg-light);
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
 }
 
@@ -43,11 +79,11 @@ li {
 
 /* font awesome icons */
 .fa-solid {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .fa-hand,
 .fa-hand-fist,
 .fa-hand-scissors {
-  color: rgb(244, 213, 73);
+  color: var(--clr-yellow);
 }
