@@ -12,7 +12,13 @@ li {
   line-height: 2;
 }
 
-button {
+/* buttons */
+.game-buttons {
+  display: flex;
+  gap: 4rem;
+}
+
+.btn {
   margin-left: 22px;
   padding: 8px 24px;
   border: none;
@@ -22,20 +28,20 @@ button {
   cursor: pointer;
 }
 
-.buttons {
-  display: flex;
-  gap: 4rem;
-}
-
-#rock,
-#paper,
-#scissors {
+.btn-rock,
+.btn-paper,
+.btn-scissors {
   background-color: rgb(47, 51, 61);
   width: 140px;
   height: 140px;
   border-radius: 100%;
 }
 
+.scissors {
+  transform: rotate(90deg) scaleY(-1);
+}
+
+/* font awesome icons */
 .fa-solid {
   font-size: 4rem;
 }
