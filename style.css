@@ -48,7 +48,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   color: var(--clr-gray);
   text-align: center;
 }
