@@ -3,6 +3,7 @@ const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
 const playerSelection = document.querySelector(".player-selection");
 const computerSelection = document.querySelector(".computer-selection");
+
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
 const scissorsIconClassName = "fa-solid fa-hand-scissors icon-result";
@@ -20,38 +21,51 @@ function insertIcon(selection, className) {
 }
 
 function getComputerChoice() {
-  const iconClasses = [
-    rockIconClassName,
-    paperIconClassName,
-    scissorsIconClassName,
+  const icons = [
+    {
+      name: "rock",
+      className: rockIconClassName,
+    },
+    {
+      name: "paper",
+      className: paperIconClassName,
+    },
+    {
+      name: "scissors",
+      className: scissorsIconClassName,
+    },
   ];
 
   let randomIcons = [];
 
-  while (iconClasses.length > 0) {
-    const randomIndex = Math.floor(Math.random() * iconClasses.length);
-    randomIcons.push(iconClasses.splice(randomIndex, 1)[0]);
+  while (icons.length > 0) {
+    const randomIndex = Math.floor(Math.random() * icons.length);
+    randomIcons.push(icons.splice(randomIndex, 1)[0]);
   }
 
-  randomIcons.forEach((className, index) => {
+  randomIcons.forEach((icon, index) => {
     setTimeout(() => {
-      const icon = document.createElement("i");
-      icon.setAttribute("class", className);
-      icon.style.fontSize = "2.2rem";
+      const iconElement = document.createElement("i");
+      iconElement.setAttribute("class", icon.className);
+      iconElement.style.fontSize = "2.2rem";
       computerSelection.innerHTML = "";
-      computerSelection.appendChild(icon);
+      computerSelection.appendChild(iconElement);
     }, index * 300);
   });
 
-  setTimeout(() => {
-    const chosenIcon = document.createElement("i");
-    const chosenClassName = randomIcons[Math.floor(Math.random() * randomIcons.length)];
-    chosenIcon.setAttribute("class", chosenClassName);
-    computerSelection.innerHTML = "";
-    computerSelection.appendChild(chosenIcon);
-  }, 1000);
-}
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const chosenIcon = document.createElement("i");
+      const chosenIconData = randomIcons[Math.floor(Math.random() * randomIcons.length)];
+      chosenIcon.setAttribute("class", chosenIconData.className);
+      chosenIcon.setAttribute("name", chosenIconData.name);
+      computerSelection.innerHTML = "";
+      computerSelection.appendChild(chosenIcon);
 
+      resolve(chosenIconData.name);
+    }, 1000);
+  });
+}
 
 function getHumanChoice(option) {
   switch (option) {
