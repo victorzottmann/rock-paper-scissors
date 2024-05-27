@@ -120,3 +120,7 @@ footer {
 .fa-hand-scissors {
   color: var(--clr-yellow);
 }
+
+.icon-result {
+  font-size: 5rem;
+}
