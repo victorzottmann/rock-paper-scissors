@@ -46,10 +46,20 @@ footer {
 /* scoreboard */
 .scoreboard {
   display: flex;
+  flex-direction: column;
   gap: 5rem;
   margin-bottom: 3rem;
   color: var(--clr-gray);
   text-align: center;
+}
+
+.round {
+  font-size: 1.8rem;
+}
+
+.scoreboard-choices {
+  display: flex;
+  gap: 4rem;
 }
 
 .player-selection,
@@ -72,7 +82,6 @@ footer {
 }
 
 .btn {
-  margin-left: 22px;
   padding: 8px 24px;
   border: none;
   color: white;
