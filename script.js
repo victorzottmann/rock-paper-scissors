@@ -3,10 +3,17 @@ const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
 const playerSelection = document.querySelector(".player-selection");
 const computerSelection = document.querySelector(".computer-selection");
+const playerScoreText = document.querySelector(".player-score");
+const computerScoreText = document.querySelector(".computer-score");
+const roundNumber = document.querySelector(".round-number");
 
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
 const scissorsIconClassName = "fa-solid fa-hand-scissors icon-result";
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
 
 function insertIcon(selection, className) {
   const childExists = selection.hasChildNodes();
@@ -81,21 +88,6 @@ function getHumanChoice(option) {
   }
 }
 
-rockBtn.addEventListener("click", () => {
-  getHumanChoice("rock");
-  setTimeout(getComputerChoice, 500);
-});
-
-paperBtn.addEventListener("click", () => {
-  getHumanChoice("paper");
-  setTimeout(getComputerChoice, 500);
-});
-
-scissorsBtn.addEventListener("click", () => {
-  getHumanChoice("scissors");
-  setTimeout(getComputerChoice, 500);
-});
-
 function playRound(humanChoice, computerChoice) {
   const outcomes = {
     rock: {
@@ -118,4 +110,40 @@ function playRound(humanChoice, computerChoice) {
   return outcomes[humanChoice][computerChoice];
 }
 
-function playGame() {}
+function updateScore(outcome) {
+  if (outcome == "human wins") {
+    playerScore++;
+    playerScoreText.textContent = playerScore;
+  } else if (outcome == "computer wins") {
+    computerScore++;
+    computerScoreText.textContent = computerScore;
+  }
+}
+
+async function handleClick(option) {
+  round++;
+  if (round <= 5) {
+    roundNumber.textContent = round;
+  }
+
+  const humanChoice = getHumanChoice(option);
+  const computerChoice = await getComputerChoice();
+  const result = playRound(humanChoice, computerChoice);
+  updateScore(result);
+
+  if (round == 5) {
+    console.log("Game Over");
+    [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
+      btn.disabled = true;
+      btn.style.border = "none";
+    });
+  }
+}
+
+function playGame() {
+  rockBtn.addEventListener("click", () => handleClick("rock"));
+  paperBtn.addEventListener("click", () => handleClick("paper"));
+  scissorsBtn.addEventListener("click", () => handleClick("scissors"));
+}
+
+playGame();
