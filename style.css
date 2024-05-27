@@ -64,6 +64,8 @@ footer {
 
 .player-selection,
 .computer-selection {
+  display: grid;
+  place-items: center;
   border-radius: 15px;
   border: 2px dashed var(--clr-yellow);
   width: 170px;
