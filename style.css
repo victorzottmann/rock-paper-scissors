@@ -3,8 +3,8 @@
   --clr-bg-dark: rgb(57, 62, 73);
   --clr-gray: rgb(170, 177, 189);
   --clr-green: rgb(155, 187, 124);
-  --clr-red: rgb(209, 114, 119);
   --clr-hover: rgb(39, 43, 53);
+  --clr-red: rgb(209, 114, 119);
   --clr-yellow: rgb(244, 213, 73);
 }
 
@@ -96,7 +96,8 @@ footer {
 }
 
 .game-over-won,
-.game-over-lost {
+.game-over-lost,
+.game-over-draw {
   font-size: 2rem;
 }
 
@@ -106,6 +107,10 @@ footer {
 
 .game-over-lost {
   color: var(--clr-red);
+}
+
+.game-over-draw {
+  color: var(--clr-gray);
 }
 
 /* buttons */

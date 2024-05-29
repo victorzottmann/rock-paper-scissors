@@ -12,7 +12,7 @@ const computerScoreText = document.querySelector(".computer-score");
 const roundTitle = document.querySelector(".round-title"); 
 const roundNumber = document.querySelector(".round-number");
 const roundMessage = document.querySelector(".round-message");
-const gameOver = document.querySelector(".game-over");
+const gameOverText = document.querySelector(".game-over");
 
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
@@ -114,16 +114,19 @@ function updateRoundMessage(message) {
   roundMessage.style.visibility = "visible";
 }
 
-
 function showGameOverMessage() {
   if (playerScore > computerScore) {
-    gameOver.classList.add("game-over-won");
-    gameOver.textContent = "You won! 🎉";
-    gameOver.style.display = "block";
+    gameOverText.classList.add("game-over-won");
+    gameOverText.textContent = "You won! 🎉";
+    gameOverText.style.display = "block";
+  } else if (computerScore > playerScore) {
+    gameOverText.classList.add("game-over-lost");
+    gameOverText.textContent = "You lost! 😔";
+    gameOverText.style.display = "block";
   } else {
-    gameOver.classList.add("game-over-lost");
-    gameOver.textContent = "You lost! 😔";
-    gameOver.style.display = "block";
+    gameOverText.classList.add("game-over-draw");
+    gameOverText.textContent = "It's a draw! 🤝";
+    gameOverText.style.display = "block";
   }
 }
 
@@ -160,8 +163,8 @@ function reset() {
   roundTitle.style.display = "block";
   roundMessage.textContent = "";
   playAgainBtn.style.display = "none";
-  gameOver.style.display = "none";
-  gameOver.textContent = "";
+  gameOverText.style.display = "none";
+  gameOverText.textContent = "";
   playerSelection.textContent = "";
   computerSelection.textContent = "";
   playerScoreText.textContent = "0";
