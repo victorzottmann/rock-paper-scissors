@@ -9,7 +9,8 @@ const playerScoreText = document.querySelector(".player-score");
 const computerScoreText = document.querySelector(".computer-score");
 const roundTitle = document.querySelector(".round-title"); 
 const roundNumber = document.querySelector(".round-number");
-const gameOverTitle = document.querySelector(".game-over-title");
+const roundMessage = document.querySelector(".round-message");
+const gameOver = document.querySelector(".game-over");
 
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
@@ -95,19 +96,46 @@ function getHumanChoice(option) {
 function playRound(humanChoice, computerChoice) {
   const outcomes = {
     rock: {
-      rock: "draw",
-      paper: "computer wins",
-      scissors: "human wins",
+      rock: {
+        outcome: "draw",
+        message: "It's a draw!",
+      },
+      paper: {
+        outcome: "computer wins",
+        message: "Paper beats rock!",
+      },
+      scissors: {
+        outcome: "human wins",
+        message: "Rock beats scissors!",
+      },
     },
     paper: {
-      rock: "human wins",
-      paper: "draw",
-      scissors: "computer wins",
+      rock: {
+        outcome: "human wins",
+        message: "Paper beats rock!",
+      },
+      paper: {
+        outcome: "draw",
+        message: "It's a draw!",
+      },
+      scissors: {
+        outcome: "computer wins",
+        message: "Paper beats scissors!",
+      },
     },
     scissors: {
-      rock: "computer wins",
-      paper: "human wins",
-      scissors: "draw",
+      rock: {
+        outcome: "computer wins",
+        message: "Rock beats scissors!",
+      },
+      paper: {
+        outcome: "human wins",
+        message: "Scissors beat paper!"
+      },
+      scissors: {
+        outcome: "draw",
+        message: "It's a draw!",
+      },
     },
   };
 
@@ -124,15 +152,21 @@ function updateScore(outcome) {
   }
 }
 
+function updateRoundMessage(message) {
+  roundMessage.textContent = message;
+  roundMessage.style.visibility = "visible";
+}
+
+
 function showGameOverMessage() {
   if (playerScore > computerScore) {
-    gameOverTitle.classList.add("game-over-won");
-    gameOverTitle.textContent = "You won! 🎉";
-    gameOverTitle.style.display = "block";
+    gameOver.classList.add("game-over-won");
+    gameOver.textContent = "You won! 🎉";
+    gameOver.style.display = "block";
   } else {
-    gameOverTitle.classList.add("game-over-lost");
-    gameOverTitle.textContent = "You lost! 😔";
-    gameOverTitle.style.display = "block";
+    gameOver.classList.add("game-over-lost");
+    gameOver.textContent = "You lost! 😔";
+    gameOver.style.display = "block";
   }
 }
 
@@ -141,11 +175,14 @@ async function handleClick(option) {
   if (round <= 5) {
     roundNumber.textContent = round;
   }
+  updateRoundMessage(". . .");
 
   const humanChoice = getHumanChoice(option);
   const computerChoice = await getComputerChoice();
   const result = playRound(humanChoice, computerChoice);
-  updateScore(result);
+
+  updateScore(result.outcome);
+  updateRoundMessage(result.message);
 
   if (round == 5) {
     [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
@@ -164,9 +201,10 @@ function reset() {
   round = 0;
   roundNumber.textContent = 1;
   roundTitle.style.display = "block";
+  roundMessage.textContent = "";
   playAgainBtn.style.display = "none";
-  gameOverTitle.style.display = "none";
-  gameOverTitle.textContent = "";
+  gameOver.style.display = "none";
+  gameOver.textContent = "";
   playerSelection.textContent = "";
   computerSelection.textContent = "";
   playerScoreText.textContent = "0";
@@ -180,6 +218,7 @@ function playGame() {
       btn.disabled = false;
     });
     startBtn.style.display = "none";
+    roundMessage.style.display = "block";
     roundTitle.style.display = "block";
     playerSelection.style.borderColor = "var(--clr-yellow)";
     computerSelection.style.borderColor = "var(--clr-yellow)";

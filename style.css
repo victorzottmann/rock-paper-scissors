@@ -44,19 +44,29 @@ footer {
   color: var(--clr-gray);
 }
 
-/* scoreboard */
-.scoreboard {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-bottom: 4rem;
-  color: var(--clr-gray);
-  text-align: center;
+.round-container {
+  line-height: 2;
 }
 
 .round-title {
   display: none;
-  font-size: 1.8rem;
+  font-size: 2rem;
+}
+
+.round-message {
+  font-size: 1.5rem;
+  display: none;
+  visibility: hidden;
+}
+
+/* scoreboard */
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  color: var(--clr-gray);
+  text-align: center;
 }
 
 .scoreboard-choices {
@@ -72,19 +82,21 @@ footer {
   border: 2px dashed var(--clr-gray);
   width: 170px;
   height: 190px;
-  margin-bottom: 1.5rem;
 }
 
 .score-text {
   font-size: 1.5rem;
+  padding-block: 1.5rem;
 }
+
 
 .game-over {
-  line-height: 2;
+  display: none;
+  font-size: 2rem;
 }
 
-.game-over-title {
-  display: none;
+.game-over-won,
+.game-over-lost {
   font-size: 2rem;
 }
 
