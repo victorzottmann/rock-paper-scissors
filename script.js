@@ -154,6 +154,11 @@ async function handleClick(option) {
   }
 }
 
+function removeAdditionalClasses(el) {
+  const firstClass = el.classList[0];
+  el.className = firstClass;
+}
+
 function reset() {
   [rockBtn, paperBtn, scissorsBtn].forEach(btn => btn.style.display = "block");
   playerScore = 0;
@@ -169,6 +174,7 @@ function reset() {
   computerSelection.textContent = "";
   playerScoreText.textContent = "0";
   computerScoreText.textContent = "0";
+  removeAdditionalClasses(gameOverText);
 }
 
 function playGame() {
