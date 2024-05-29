@@ -1,3 +1,4 @@
+const startBtn = document.querySelector(".btn-start");
 const rockBtn = document.querySelector(".btn-rock");
 const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
@@ -5,7 +6,10 @@ const playerSelection = document.querySelector(".player-selection");
 const computerSelection = document.querySelector(".computer-selection");
 const playerScoreText = document.querySelector(".player-score");
 const computerScoreText = document.querySelector(".computer-score");
+const roundTitle = document.querySelector(".round-title"); 
 const roundNumber = document.querySelector(".round-number");
+const gameOverTitle = document.querySelector(".game-over-title");
+const gameOverDescription = document.querySelector(".game-over-description");
 
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
@@ -132,15 +136,21 @@ async function handleClick(option) {
   updateScore(result);
 
   if (round == 5) {
-    console.log("Game Over");
     [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
-      btn.disabled = true;
-      btn.style.border = "none";
+      btn.style.display = "none";
     });
   }
 }
 
 function playGame() {
+  startBtn.addEventListener("click", () => {
+    [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
+      btn.setAttribute("disabled", "false");
+    });
+    startBtn.style.display = "none";
+    roundTitle.style.display = "block";
+  });
+
   rockBtn.addEventListener("click", () => handleClick("rock"));
   paperBtn.addEventListener("click", () => handleClick("paper"));
   scissorsBtn.addEventListener("click", () => handleClick("scissors"));

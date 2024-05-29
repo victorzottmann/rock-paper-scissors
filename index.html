@@ -16,7 +16,14 @@
   
   <main>
     <section class="scoreboard">
-      <h2 class="round">Round <span class="round-number">0</span></h2>
+      <button class="btn-start">Start Game</button>
+      <!-- <div class="game-over">
+        <h2 class="game-over-title">Game Over!</h2>
+        <p class="game-over-description">
+          You Win!
+        </p>
+      </div> -->
+      <h2 class="round-title">Round <span class="round-number">0</span></h2>
       <div class="scoreboard-choices">
         <div class="scoreboard-player">
           <div class="player-selection"></div>
@@ -34,13 +41,13 @@
     </section>
 
     <section class="game-buttons">
-      <button class="btn btn-rock">
+      <button class="btn btn-rock" disabled="true">
         <i class="fa-solid fa-hand-fist"></i>
       </button>
-      <button class="btn btn-paper">
+      <button class="btn btn-paper" disabled="true">
         <i class="fa-solid fa-hand"></i>
       </button>
-      <button class="btn btn-scissors">
+      <button class="btn btn-scissors" disabled="true">
         <i class="fa-solid fa-hand-scissors"></i>
       </button>
     </section>

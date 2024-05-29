@@ -53,7 +53,8 @@ footer {
   text-align: center;
 }
 
-.round {
+.round-title {
+  display: none;
   font-size: 1.8rem;
 }
 
@@ -77,7 +78,31 @@ footer {
   font-size: 1.5rem;
 }
 
+.game-over {
+  line-height: 2;
+}
+
+.game-over-title {
+  font-size: 2rem;
+}
+
+.game-over-description {
+  font-size: 1.5rem;
+}
+
 /* buttons */
+.btn-start {
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: var(--clr-yellow);
+  color: var(--clr-bg-dark);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+}
+
 .game-buttons {
   display: flex;
   gap: 4rem;
@@ -92,9 +117,13 @@ footer {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:not([disabled="true"]):hover {
   border: 1px solid var(--clr-gray);
   background-color: var(--clr-hover);
+}
+
+.btn[disabled="true"] .fa-solid {
+  color: var(--clr-gray);
 }
 
 .btn-rock,
