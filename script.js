@@ -1,3 +1,5 @@
+import { outcomes } from "./data.js";
+
 const startBtn = document.querySelector(".btn-start");
 const rockBtn = document.querySelector(".btn-rock");
 const paperBtn = document.querySelector(".btn-paper");
@@ -94,51 +96,6 @@ function getHumanChoice(option) {
 }
 
 function playRound(humanChoice, computerChoice) {
-  const outcomes = {
-    rock: {
-      rock: {
-        outcome: "draw",
-        message: "It's a draw!",
-      },
-      paper: {
-        outcome: "computer wins",
-        message: "Paper beats rock!",
-      },
-      scissors: {
-        outcome: "human wins",
-        message: "Rock beats scissors!",
-      },
-    },
-    paper: {
-      rock: {
-        outcome: "human wins",
-        message: "Paper beats rock!",
-      },
-      paper: {
-        outcome: "draw",
-        message: "It's a draw!",
-      },
-      scissors: {
-        outcome: "computer wins",
-        message: "Paper beats scissors!",
-      },
-    },
-    scissors: {
-      rock: {
-        outcome: "computer wins",
-        message: "Rock beats scissors!",
-      },
-      paper: {
-        outcome: "human wins",
-        message: "Scissors beat paper!"
-      },
-      scissors: {
-        outcome: "draw",
-        message: "It's a draw!",
-      },
-    },
-  };
-
   return outcomes[humanChoice][computerChoice];
 }
 
