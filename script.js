@@ -9,7 +9,6 @@ const computerScoreText = document.querySelector(".computer-score");
 const roundTitle = document.querySelector(".round-title"); 
 const roundNumber = document.querySelector(".round-number");
 const gameOverTitle = document.querySelector(".game-over-title");
-const gameOverDescription = document.querySelector(".game-over-description");
 
 const rockIconClassName = "fa-solid fa-hand-fist icon-result";
 const paperIconClassName = "fa-solid fa-hand icon-result";
@@ -124,6 +123,18 @@ function updateScore(outcome) {
   }
 }
 
+function showGameOverMessage() {
+  if (playerScore > computerScore) {
+    gameOverTitle.classList.add("game-over-won");
+    gameOverTitle.textContent = "You won! 🎉";
+    gameOverTitle.style.display = "block";
+  } else {
+    gameOverTitle.classList.add("game-over-lost");
+    gameOverTitle.textContent = "You lost! 😔";
+    gameOverTitle.style.display = "block";
+  }
+}
+
 async function handleClick(option) {
   round++;
   if (round <= 5) {
@@ -139,16 +150,21 @@ async function handleClick(option) {
     [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
       btn.style.display = "none";
     });
+    roundTitle.style.display = "none";
+    showGameOverMessage();
   }
 }
 
 function playGame() {
   startBtn.addEventListener("click", () => {
     [rockBtn, paperBtn, scissorsBtn].forEach(btn => {
-      btn.setAttribute("disabled", "false");
+      btn.style.display = "block";
+      btn.disabled = false;
     });
     startBtn.style.display = "none";
     roundTitle.style.display = "block";
+    playerSelection.style.borderColor = "var(--clr-yellow)";
+    computerSelection.style.borderColor = "var(--clr-yellow)";
   });
 
   rockBtn.addEventListener("click", () => handleClick("rock"));

@@ -2,7 +2,8 @@
   --clr-bg-light: rgb(47, 51, 61);
   --clr-bg-dark: rgb(57, 62, 73);
   --clr-gray: rgb(170, 177, 189);
-  --clr-green: rgb(161, 194, 129);
+  --clr-green: rgb(155, 187, 124);
+  --clr-red: rgb(209, 114, 119);
   --clr-hover: rgb(39, 43, 53);
   --clr-yellow: rgb(244, 213, 73);
 }
@@ -47,7 +48,7 @@ footer {
 .scoreboard {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   margin-bottom: 4rem;
   color: var(--clr-gray);
   text-align: center;
@@ -68,7 +69,7 @@ footer {
   display: grid;
   place-items: center;
   border-radius: 15px;
-  border: 2px dashed var(--clr-yellow);
+  border: 2px dashed var(--clr-gray);
   width: 170px;
   height: 190px;
   margin-bottom: 1.5rem;
@@ -83,11 +84,16 @@ footer {
 }
 
 .game-over-title {
+  display: none;
   font-size: 2rem;
 }
 
-.game-over-description {
-  font-size: 1.5rem;
+.game-over-won {
+  color: var(--clr-green);
+}
+
+.game-over-lost {
+  color: var(--clr-red);
 }
 
 /* buttons */
@@ -117,13 +123,13 @@ footer {
   cursor: pointer;
 }
 
+.btn[disabled="true"] .fa-solid {
+  color: var(--clr-gray);
+}
+
 .btn:not([disabled="true"]):hover {
   border: 1px solid var(--clr-gray);
   background-color: var(--clr-hover);
-}
-
-.btn[disabled="true"] .fa-solid {
-  color: var(--clr-gray);
 }
 
 .btn-rock,
@@ -133,6 +139,7 @@ footer {
   width: 120px;
   height: 120px;
   border-radius: 100%;
+  display: none;
 }
 
 .scissors {
