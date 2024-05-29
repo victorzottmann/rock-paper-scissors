@@ -2,6 +2,7 @@ const startBtn = document.querySelector(".btn-start");
 const rockBtn = document.querySelector(".btn-rock");
 const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
+const playAgainBtn = document.querySelector(".btn-play-again");
 const playerSelection = document.querySelector(".player-selection");
 const computerSelection = document.querySelector(".computer-selection");
 const playerScoreText = document.querySelector(".player-score");
@@ -151,8 +152,25 @@ async function handleClick(option) {
       btn.style.display = "none";
     });
     roundTitle.style.display = "none";
+    playAgainBtn.style.display = "block";
     showGameOverMessage();
   }
+}
+
+function reset() {
+  [rockBtn, paperBtn, scissorsBtn].forEach(btn => btn.style.display = "block");
+  playerScore = 0;
+  computerScore = 0;
+  round = 0;
+  roundNumber.textContent = 1;
+  roundTitle.style.display = "block";
+  playAgainBtn.style.display = "none";
+  gameOverTitle.style.display = "none";
+  gameOverTitle.textContent = "";
+  playerSelection.textContent = "";
+  computerSelection.textContent = "";
+  playerScoreText.textContent = "0";
+  computerScoreText.textContent = "0";
 }
 
 function playGame() {
@@ -170,6 +188,7 @@ function playGame() {
   rockBtn.addEventListener("click", () => handleClick("rock"));
   paperBtn.addEventListener("click", () => handleClick("paper"));
   scissorsBtn.addEventListener("click", () => handleClick("scissors"));
+  playAgainBtn.addEventListener("click", reset);
 }
 
 playGame();
