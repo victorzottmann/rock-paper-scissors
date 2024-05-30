@@ -62,6 +62,7 @@ function getComputerChoice() {
       const iconElement = document.createElement("i");
       iconElement.setAttribute("class", icon.className);
       iconElement.style.fontSize = "2.2rem";
+      
       computerSelection.innerHTML = "";
       computerSelection.appendChild(iconElement);
     }, index * 300);
@@ -71,8 +72,10 @@ function getComputerChoice() {
     setTimeout(() => {
       const chosenIcon = document.createElement("i");
       const chosenIconData = randomIcons[Math.floor(Math.random() * randomIcons.length)];
+
       chosenIcon.setAttribute("class", chosenIconData.className);
       chosenIcon.setAttribute("name", chosenIconData.name);
+      
       computerSelection.innerHTML = "";
       computerSelection.appendChild(chosenIcon);
 
@@ -135,6 +138,7 @@ async function handleClick(option) {
   if (round <= 5) {
     roundNumber.textContent = round;
   }
+  
   updateRoundMessage(". . .");
 
   const humanChoice = getHumanChoice(option);
@@ -149,6 +153,7 @@ async function handleClick(option) {
       btn.style.display = "none";
     });
     roundTitle.style.display = "none";
+    roundMessage.style.display = "none";
     playAgainBtn.style.display = "block";
     showGameOverMessage();
   }
