@@ -114,7 +114,6 @@ function updateScore(outcome) {
 
 function updateRoundMessage(message) {
   roundMessage.textContent = message;
-  roundMessage.style.visibility = "visible";
 }
 
 function showGameOverMessage() {
@@ -171,7 +170,7 @@ function reset() {
   round = 0;
   roundNumber.textContent = 1;
   roundTitle.style.display = "block";
-  roundMessage.textContent = "";
+  roundMessage.style.display = "block";
   playAgainBtn.style.display = "none";
   gameOverText.style.display = "none";
   gameOverText.textContent = "";
@@ -179,6 +178,7 @@ function reset() {
   computerSelection.textContent = "";
   playerScoreText.textContent = "0";
   computerScoreText.textContent = "0";
+  updateRoundMessage("");
   removeAdditionalClasses(gameOverText);
 }
 
@@ -189,7 +189,6 @@ function playGame() {
       btn.disabled = false;
     });
     startBtn.style.display = "none";
-    roundMessage.style.display = "block";
     roundTitle.style.display = "block";
     playerSelection.style.borderColor = "var(--clr-yellow)";
     computerSelection.style.borderColor = "var(--clr-yellow)";
