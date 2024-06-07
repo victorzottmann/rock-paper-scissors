@@ -24,7 +24,7 @@ export const outcomes = {
     },
     scissors: {
       outcome: "computer wins",
-      message: "Paper beats scissors!",
+      message: "Scissors beat paper!",
     },
   },
   scissors: {
